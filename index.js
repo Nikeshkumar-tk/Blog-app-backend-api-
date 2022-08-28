@@ -18,10 +18,13 @@ mongoose.connect(process.env.MONGO_URL,{
 //        const storage = multer.memoryStorage();
 // const upload = multer({ storage: storage }).single('file');
 // app.post('/upload', upload, addImage);
-
+app.get("/",(req,res)=>{
+    res.send("hello")
+})
 app.use("/api/auth",authRoute)
 app.use("/api/users",userRoute)
 app.use("/api/posts",postRoute)
 app.use("/api/categories",catRoute)
+const port=process.env.PROCESS||5000
 
-app.listen(process.env.PORT||5000,()=>console.log("server started"))
+app.listen(port,()=>console.log("server started"))
