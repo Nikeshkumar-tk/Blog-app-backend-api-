@@ -58,4 +58,17 @@ router.get("/:id",async(req,res)=>{
     }
 
 })
+router.get("/admin/all",async(req,res)=>{
+try{
+    const users=await User.find()
+    res.status(200).json(users)
+    console.log(users)
+
+}catch(err){
+
+    console.log(err)
+    res.status(400)
+}
+
+})
 module.exports=router
